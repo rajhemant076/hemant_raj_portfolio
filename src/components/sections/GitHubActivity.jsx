@@ -4,6 +4,17 @@ import GitHubCalendar from 'react-github-calendar';
 import { FiStar, FiGitBranch, FiExternalLink, FiRefreshCw, FiAlertCircle } from 'react-icons/fi';
 import SectionWrapper from '../SectionWrapper';
 
+// ── Responsive window width hook ────────────────────────────────────────────
+function useWindowWidth() {
+  const [width, setWidth] = useState(() => typeof window !== 'undefined' ? window.innerWidth : 1024);
+  useEffect(() => {
+    const handle = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handle, { passive: true });
+    return () => window.removeEventListener('resize', handle);
+  }, []);
+  return width;
+}
+
 // ── Set your GitHub username here ───────────────────────────────────────────
 const GITHUB_USERNAME = 'rajhemant076';
 // ────────────────────────────────────────────────────────────────────────────
@@ -103,7 +114,9 @@ function LangBar({ repos }) {
 
   return (
     <div className="glass-card rounded-2xl p-6 mt-6">
-      
+      <p className="text-xs font-mono mb-5" style={{ color: 'var(--text-secondary)' }}>
+        // language_distribution
+      </p>
       <div className="flex h-2 rounded-full overflow-hidden mb-5 gap-0.5">
         {sorted.map(l => (
           <motion.div
@@ -128,12 +141,20 @@ function LangBar({ repos }) {
   );
 }
 
-export default function GitHubActivity() {
+export default function GithubActivity() {
   const [profile, setProfile] = useState(null);
   const [repos, setRepos]     = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError]     = useState(null);
   const [showAll, setShowAll] = useState(false);
+  const width = useWindowWidth();
+
+  // Calendar sizing — shrink blocks on narrow screens
+  const calBlockSize   = width < 480 ? 8  : width < 768 ? 10 : 12;
+  const calBlockMargin = width < 480 ? 2  : 3;
+  const calFontSize    = width < 480 ? 9  : 11;
+  // Show fewer repo cards on mobile by default
+  const defaultRepoCount = width < 768 ? 3 : 5;
 
   const fetchGitHub = async () => {
     setLoading(true);
@@ -157,7 +178,7 @@ export default function GitHubActivity() {
 
   useEffect(() => { fetchGitHub(); }, []);
 
-  const displayedRepos = showAll ? repos : repos.slice(0, 5);
+  const displayedRepos = showAll ? repos : repos.slice(0, defaultRepoCount);
 
   const stats = profile
     ? [
@@ -172,7 +193,7 @@ export default function GitHubActivity() {
     <SectionWrapper id="github">
       <div className="section-tag mb-6">Open Source</div>
 
-      <div className="flex flex-col md:flex-row md:items-end gap-4 mb-16">
+      <div className="flex flex-wrap items-end gap-3 mb-12 sm:mb-16">
         <h2 className="section-heading mb-0" style={{ color: 'var(--text-primary)' }}>
           GitHub <span className="gradient-text">activity</span>
         </h2>
@@ -195,7 +216,7 @@ export default function GitHubActivity() {
           onClick={fetchGitHub}
           whileHover={{ rotate: 180 }}
           transition={{ duration: 0.4 }}
-          className="p-2 rounded-lg mb-1 ml-auto md:ml-0 self-start transition-colors duration-200 hover:text-green-400"
+          className="p-2 rounded-lg mb-1 ml-auto transition-colors duration-200 hover:text-green-400"
           style={{ color: 'var(--text-secondary)', border: '1px solid var(--border)' }}
           title="Refresh"
         >
@@ -218,43 +239,52 @@ export default function GitHubActivity() {
         )}
       </AnimatePresence>
 
-      <div className="grid lg:grid-cols-3 gap-8">
+      <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
         {/* Calendar + lang bar */}
-        <div className="lg:col-span-2">
-          <div className="glass-card rounded-2xl p-6">
-            
-            <div className="overflow-x-auto scrollbar-none">
+        <div className="lg:col-span-2 min-w-0">
+          <div className="glass-card rounded-2xl p-4 sm:p-6">
+            <p className="text-xs font-mono mb-4 sm:mb-6" style={{ color: 'var(--text-secondary)' }}>
+              // contribution_graph · @{GITHUB_USERNAME}
+            </p>
+            {/* Calendar scrolls horizontally on very small screens */}
+            <div className="overflow-x-auto scrollbar-none -mx-1 px-1">
               <CalendarErrorBoundary>
                 <GitHubCalendar
                   username={GITHUB_USERNAME}
                   colorScheme="dark"
-                  blockSize={12}
-                  blockMargin={3}
-                  fontSize={11}
+                  blockSize={calBlockSize}
+                  blockMargin={calBlockMargin}
+                  fontSize={calFontSize}
                   theme={{ dark: ['#161b24', '#1a4731', '#166534', '#16a34a', '#4ade80'] }}
-                  style={{ minWidth: '500px' }}
                 />
               </CalendarErrorBoundary>
             </div>
           </div>
 
-          {loading && <Skeleton className="mt-6 h-36 w-full" />}
+          {loading && <Skeleton className="mt-4 sm:mt-6 h-36 w-full" />}
           {!loading && repos.length > 0 && <LangBar repos={repos} />}
         </div>
 
         {/* Repos + stats */}
-        <div className="space-y-4">
-          
+        <div className="space-y-3 sm:space-y-4">
+          <p className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>
+            // top_repositories
+          </p>
 
           {loading && Array.from({ length: 4 }).map((_, i) => (
             <Skeleton key={i} className="h-24 w-full" style={{ animationDelay: `${i * 0.1}s` }} />
           ))}
 
-          {!loading && !error && displayedRepos.map((repo, i) => (
-            <RepoCard key={repo.id} repo={repo} index={i} />
-          ))}
+          {/* On mobile show as 2-col mini grid; on lg+ keep single col */}
+          {!loading && !error && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+              {displayedRepos.map((repo, i) => (
+                <RepoCard key={repo.id} repo={repo} index={i} />
+              ))}
+            </div>
+          )}
 
-          {!loading && repos.length > 5 && (
+          {!loading && repos.length > defaultRepoCount && (
             <motion.button
               onClick={() => setShowAll(v => !v)}
               whileHover={{ scale: 1.01 }}
@@ -273,14 +303,14 @@ export default function GitHubActivity() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="glass-card rounded-xl p-5"
+              className="glass-card rounded-xl p-4 sm:p-5"
               style={{ border: '1px solid rgba(74,222,128,0.15)' }}
             >
-             
-              <div className="grid grid-cols-2 gap-3">
+              <p className="text-xs font-mono mb-4" style={{ color: 'var(--text-secondary)' }}>// live_stats</p>
+              <div className="grid grid-cols-4 sm:grid-cols-2 lg:grid-cols-2 gap-2 sm:gap-3">
                 {stats.map(s => (
                   <div key={s.label} className="text-center py-2 rounded-lg" style={{ background: 'rgba(255,255,255,0.03)' }}>
-                    <p className="text-lg font-bold gradient-text-green">{s.value}</p>
+                    <p className="text-base sm:text-lg font-bold gradient-text-green">{s.value}</p>
                     <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>{s.label}</p>
                   </div>
                 ))}
