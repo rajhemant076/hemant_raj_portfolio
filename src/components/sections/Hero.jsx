@@ -75,13 +75,13 @@ export default function Hero() {
               <span style={{ color: 'var(--text-secondary)' }}>$ </span>
               <TypeAnimation
                 sequence={[
-                  'Full Stack Developer',
+                  'Full-Stack Developer ',
                   2000,
-                  'React + Node.js',
+                  'CSE @ NIT Patna',
                   2000,
-                  'DSA Problem Solver',
+                  'Problem Solver',
                   2000,
-                  'CSE Student @ NIT Patna',
+                  'DSA Enthusiast',
                   2000,
                 ]}
                 wrapper="span"
