@@ -128,7 +128,7 @@ function LangBar({ repos }) {
   );
 }
 
-export default function GithubActivity() {
+export default function GitHubActivity() {
   const [profile, setProfile] = useState(null);
   const [repos, setRepos]     = useState([]);
   const [loading, setLoading] = useState(true);
