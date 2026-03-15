@@ -47,9 +47,7 @@ export default function About() {
             <p className="text-base leading-relaxed">
               I have developed projects such as Campus Share, a MERN-based resource sharing platform that improves academic resource discovery, and Road Raptors, a ride-sharing platform with multi-role architecture and an admin analytics dashboard. Alongside development, I actively practice Data Structures and Algorithms, solving 200+ problems on LeetCode, which strengthens my algorithmic thinking and system design skills.
             </p>
-             <p className="text-base leading-relaxed">
-              I am passionate about building impactful software, learning new technologies, and contributing to challenging engineering problems.
-            </p>
+             
           </div>
 
           {/* Highlight chips */}
@@ -72,9 +70,7 @@ export default function About() {
         {/* Right: tech stack */}
         <div ref={ref}>
           <div className="glass-card rounded-2xl p-8">
-            <p className="text-sm font-mono mb-6" style={{ color: 'var(--text-secondary)' }}>
-              // tech_stack
-            </p>
+            
             <div className="grid grid-cols-5 gap-4">
               {techIcons.map((tech, i) => (
                 <motion.div
@@ -98,7 +94,7 @@ export default function About() {
             </div>
 
             <div className="mt-8 pt-6" style={{ borderTop: '1px solid var(--border)' }}>
-              <p className="text-xs font-mono mb-3" style={{ color: 'var(--text-secondary)' }}>// core_skills</p>
+             
               <div className="flex flex-wrap gap-2">
                 {['REST APIs', 'JWT Auth', 'Bcrypt', 'GridFS', 'DSA', 'OOP', 'DBMS'].map(tag => (
                   <span key={tag} className="tech-badge">{tag}</span>

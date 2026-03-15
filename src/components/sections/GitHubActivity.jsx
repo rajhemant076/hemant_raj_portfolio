@@ -15,9 +15,7 @@ function useWindowWidth() {
   return width;
 }
 
-// ── Set your GitHub username here ───────────────────────────────────────────
 const GITHUB_USERNAME = 'rajhemant076';
-// ────────────────────────────────────────────────────────────────────────────
 
 class CalendarErrorBoundary extends Component {
   state = { hasError: false };
@@ -114,9 +112,7 @@ function LangBar({ repos }) {
 
   return (
     <div className="glass-card rounded-2xl p-6 mt-6">
-      <p className="text-xs font-mono mb-5" style={{ color: 'var(--text-secondary)' }}>
-        // language_distribution
-      </p>
+      
       <div className="flex h-2 rounded-full overflow-hidden mb-5 gap-0.5">
         {sorted.map(l => (
           <motion.div
@@ -243,9 +239,7 @@ export default function GithubActivity() {
         {/* Calendar + lang bar */}
         <div className="lg:col-span-2 min-w-0">
           <div className="glass-card rounded-2xl p-4 sm:p-6">
-            <p className="text-xs font-mono mb-4 sm:mb-6" style={{ color: 'var(--text-secondary)' }}>
-              // contribution_graph · @{GITHUB_USERNAME}
-            </p>
+            
             {/* Calendar scrolls horizontally on very small screens */}
             <div className="overflow-x-auto scrollbar-none -mx-1 px-1">
               <CalendarErrorBoundary>
@@ -267,9 +261,7 @@ export default function GithubActivity() {
 
         {/* Repos + stats */}
         <div className="space-y-3 sm:space-y-4">
-          <p className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>
-            // top_repositories
-          </p>
+          
 
           {loading && Array.from({ length: 4 }).map((_, i) => (
             <Skeleton key={i} className="h-24 w-full" style={{ animationDelay: `${i * 0.1}s` }} />
@@ -306,7 +298,7 @@ export default function GithubActivity() {
               className="glass-card rounded-xl p-4 sm:p-5"
               style={{ border: '1px solid rgba(74,222,128,0.15)' }}
             >
-              <p className="text-xs font-mono mb-4" style={{ color: 'var(--text-secondary)' }}>// live_stats</p>
+              
               <div className="grid grid-cols-4 sm:grid-cols-2 lg:grid-cols-2 gap-2 sm:gap-3">
                 {stats.map(s => (
                   <div key={s.label} className="text-center py-2 rounded-lg" style={{ background: 'rgba(255,255,255,0.03)' }}>

@@ -5,15 +5,15 @@ import { FiGithub, FiLinkedin, FiMail, FiSend, FiCheck, FiAlertCircle, FiMapPin 
 import SectionWrapper from '../SectionWrapper';
 import { personalInfo } from '../../data/portfolio';
 
-// Replace these with your actual EmailJS credentials
+
 const EMAILJS_SERVICE_ID  = 'service_xn1p5z7';
 const EMAILJS_TEMPLATE_ID = 'template_xjvfcnd';
 const EMAILJS_PUBLIC_KEY  = 'ssekROXspeYdtf-7Z';
 
 const socials = [
-  { icon: FiGithub,   label: 'GitHub',   href: personalInfo.github,              handle: '@rajhemant076' },
-  { icon: FiLinkedin, label: 'LinkedIn',  href: personalInfo.linkedin,            handle: '/in/hemantraj1401' },
-  { icon: FiMail,     label: 'Email',     href: `mailto:${personalInfo.email}`,   handle: personalInfo.email },
+  { icon: FiGithub,   label: 'GitHub',   href: personalInfo.github         },
+  { icon: FiLinkedin, label: 'LinkedIn',  href: personalInfo.linkedin      },
+  { icon: FiMail,     label: 'Email',     href: `mailto:${personalInfo.email}`    },
 ];
 
 export default function Contact() {
