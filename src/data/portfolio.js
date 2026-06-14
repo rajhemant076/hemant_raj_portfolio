@@ -9,7 +9,7 @@ export const personalInfo = {
   location: "Patna, Bihar, India",
   cgpa: "8.94",
   leetcode: "250+",
-  resumeUrl: "https://drive.google.com/file/d/1YN7UjhAcv4o5gbOtltascKrzn6N9QkKR/view?usp=drive_link",
+  resumeUrl: "https://drive.google.com/file/d/1L-8BNS_agvbo0-gZxJ2P_nE4uBiD0Tvm/view",
 };
 
 export const skills = {

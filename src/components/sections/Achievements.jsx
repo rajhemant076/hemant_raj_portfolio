@@ -127,7 +127,7 @@ export default function Achievements() {
             >
              
               <div className="flex items-end gap-2 mb-2">
-                <span className="text-4xl font-bold gradient-text-green">200+</span>
+                <span className="text-4xl font-bold gradient-text-green">250+</span>
                 <span className="text-sm pb-1" style={{ color: 'var(--text-secondary)' }}>problems</span>
               </div>
               <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
