@@ -21,9 +21,9 @@ const techIcons = [
 
 const highlights = [
   { label: 'Full-Stack', desc: 'React + Node.js + MongoDB' },
-  { label: 'Problem Solver', desc: '200+ LeetCode problems' },
+  { label: 'Problem Solver', desc: '250+ LeetCode problems' },
   { label: 'Team Player', desc: 'Hackathon participant' },
-  { label: 'Fast Learner', desc: 'CGPA 9.05 @ NIT Patna' },
+  { label: 'Fast Learner', desc: 'CGPA 8.94 @ NIT Patna' },
 ];
 
 export default function About() {
@@ -45,7 +45,7 @@ export default function About() {
              I am a Computer Science undergraduate at <strong style={{ color: 'var(--text-primary)' }}>NIT Patna</strong> with a strong focus on full-stack development and problem solving. I enjoy building scalable web applications using technologies like React, Node.js, Express, and MongoDB, and designing clean RESTful APIs with secure authentication.
             </p>
             <p className="text-base leading-relaxed">
-              I have developed projects such as Campus Share, a MERN-based resource sharing platform that improves academic resource discovery, and Road Raptors, a ride-sharing platform with multi-role architecture and an admin analytics dashboard. Alongside development, I actively practice Data Structures and Algorithms, solving 200+ problems on LeetCode, which strengthens my algorithmic thinking and system design skills.
+              I have developed projects such as Campus Share, a MERN-based resource sharing platform that improves academic resource discovery, and Road Raptors, a ride-sharing platform with multi-role architecture and an admin analytics dashboard. Alongside development, I actively practice Data Structures and Algorithms, solving 250+ problems on LeetCode, which strengthens my algorithmic thinking and system design skills.
             </p>
              
           </div>

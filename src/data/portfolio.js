@@ -7,8 +7,8 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/hemant-raj-04452a326",
   email: "hemant.raj14012007@gmail.com",
   location: "Patna, Bihar, India",
-  cgpa: "9.05",
-  leetcode: "200+",
+  cgpa: "8.94",
+  leetcode: "250+",
   resumeUrl: "https://drive.google.com/file/d/1YN7UjhAcv4o5gbOtltascKrzn6N9QkKR/view?usp=drive_link",
 };
 
@@ -104,7 +104,7 @@ export const education = [
     degree: "B.Tech Computer Science & Engineering",
     institution: "National Institute of Technology Patna",
     period: "2024 – 2028",
-    score: "CGPA: 9.05",
+    score: "CGPA: 8.94",
     type: "university",
     location: "Patna, Bihar",
   },
@@ -134,7 +134,7 @@ export const achievements = [
     color: "amber",
   },
   {
-    title: "200+ LeetCode Problems",
+    title: "250+ LeetCode Problems",
     description: "Focus on DSA, graphs, and dynamic programming in Java",
     icon: "code",
     color: "green",

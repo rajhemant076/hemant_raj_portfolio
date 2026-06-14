@@ -107,7 +107,7 @@ export default function Education() {
             className="glass-card rounded-2xl p-6 inline-block"
           >
             
-            <p className="text-5xl font-bold gradient-text-green">9.05</p>
+            <p className="text-5xl font-bold gradient-text-green">8.94</p>
             <p className="text-sm mt-2" style={{ color: 'var(--text-secondary)' }}>
               B.Tech CSE · NIT Patna
             </p>
